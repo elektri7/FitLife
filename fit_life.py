@@ -20,13 +20,10 @@ water_ml = user_weight * NORM_PER_KILOGRAM
 
 # Переводим полученный результат в литры
 ML_PER_LITRE = 1000  # Кол - милилитров в литре
-water_l = round(water_ml / 1000, 1)
+water_litres = round(water_ml / ML_PER_LITRE, 1)
 
 # Вывод на экран отчета для пользователя
-print(f"\n{'*' * 50}")
-print('ОТЧЁТ ДЛЯ ПОЛЬЗОВАТЕЛЯ')
-print(f'{user_name} ({user_age} г.)')
+print(f'\n{"*" * 50}\nОТЧЁТ ДЛЯ ПОЛЬЗОВАТЕЛЯ\n{user_name} ({user_age} г.)')
 print(f'Индекс Массы Тела: {bmi}')
-print(f'Рекомендуемая норма воды: {water_l} л. в день')
-print(f'\n{user_name}, будьте здоровы!')
-print('*' * 50)
+print(f'Рекомендуемая норма воды: {water_litres:.1f} л. в день')
+print(f'\n{user_name}, будьте здоровы!\n{"*" * 50}')

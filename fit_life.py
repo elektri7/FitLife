@@ -3,13 +3,49 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Вывод на экран приветствия
-print('FitLife приветствует Вас!')
+print('\nFitLife приветствует Вас!')
 
 # Запросы на ввод пользовательских данных
-user_name = input('Введите ваше имя: ').capitalize()
-user_age = int(input('Сколько вам полных лет? '))
-user_weight = float(input('Введите ваш вес в килограммах (например 65.7): '))
-user_height = float(input('Введите ваш рост в метрах (например 1.75): '))
+
+# Убираем лишние пробелы, делаем первую букву - заглавной
+user_name = input('Введите ваше имя: ').strip().capitalize()
+
+# Цикл для выявления ошибок при вводе возраста
+while True:
+    try:
+        user_age = int(input('Сколько вам полных лет? '))
+        if user_age <= 0:
+            print('Введите корректное значение возраста.')
+            continue
+        break
+    except ValueError:
+        print('Пожалуйста, введите целое число (например, 25).')
+
+# Цикл для выявления ошибок при вводе веса
+while True:
+    try:
+        user_weight = float(input('Введите ваш вес в килограммах '
+                                  '(например 65.7): '))
+        if user_weight <= 0:
+            print('Введите корректное значение веса.')
+            continue
+        break
+    except ValueError:
+        print('Пожалуйста, введите значение веса дробным числом с точкой '
+              '(например, 65.7).')
+
+# Цикл для выявления ошибок при вводе роста
+while True:
+    try:
+        user_height = float(input('Введите ваш рост в метрах '
+                                  '(например 1.75): '))
+        if user_height <= 0:
+            print('Введите корректное значение веса.')
+            continue
+        break
+    except ValueError:
+        print('Пожалуйста, введите значение роста дробным числом с точкой '
+              '(например, 1.75).')
 
 # Рассчет индекса массы тела
 bmi = round(user_weight / (user_height ** 2), 1)
